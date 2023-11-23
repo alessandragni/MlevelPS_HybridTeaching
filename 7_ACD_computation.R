@@ -119,26 +119,26 @@ df_h
 # PLOTS
 
 plGPA_pi_h = ggplot(df_h) +
-  geom_point(aes(x = !!sym('M - GPA - pi_h'), y = stud_career_degree_name, color = "M"), size = 4, alpha=0.7) +
-  geom_point(aes(x = !!sym('R - GPA - pi_h'), y = stud_career_degree_name, color = "R"), size = 4, alpha=0.7) +
+  geom_point(aes(x = !!sym('M - GPA - pi_h'), y = stud_career_degree_name, shape = "M", color = "M"), size = 4, alpha = 0.6) +
+  geom_point(aes(x = !!sym('R - GPA - pi_h'), y = stud_career_degree_name, shape = "R", color = "R"), size = 4, alpha = 0.6) +
   labs(x = TeX(r'($\pi_h$)'),
        y = TeX(r'(Degree Course $h$)'),
        title = 'GPA') +
-  scale_color_manual(values = c("M" = "blue", "R" = "red"), labels = c("MLM", "GLMM")) +
-  guides(color = guide_legend(title = "PS Model")) + 
+  scale_shape_manual(values = c("M" = 16, "R" = 18), labels = c("MLM", "GLMM"), name = "PS Model") +
+  scale_color_manual(values = c("M" = "blue", "R" = "red"), labels = c("MLM", "GLMM"), name = "PS Model") +
   theme(legend.position = "top")
 print(plGPA_pi_h)
 ggsave("Images/EP_GPA_pi_h.jpeg", plot = plGPA_pi_h, width = 8, height = 8)
 
 
 plGPA_w_h = ggplot(df_h) +
-  geom_point(aes(x = !!sym('M - GPA - w_h'), y = stud_career_degree_name, color = "M"), size = 4, alpha=0.7) +
-  geom_point(aes(x = !!sym('R - GPA - w_h'), y = stud_career_degree_name, color = "R"), size = 4, alpha=0.7) + 
+  geom_point(aes(x = !!sym('M - GPA - w_h'), y = stud_career_degree_name, shape = "M", color = "M"), size = 4, alpha = 0.6) +
+  geom_point(aes(x = !!sym('R - GPA - w_h'), y = stud_career_degree_name, shape = "R", color = "R"), size = 4, alpha = 0.6) +
   labs(x = TeX(r'($w_h$)'),
        y = TeX(r'(Degree Course $h$)'),
        title = 'GPA') +
-  scale_color_manual(values = c("M" = "blue", "R" = "red"), labels = c("MLM",  "GLMM")) +
-  guides(color = guide_legend(title = "PS Model")) + 
+  scale_shape_manual(values = c("M" = 16, "R" = 18), labels = c("MLM", "GLMM"), name = "PS Model") +
+  scale_color_manual(values = c("M" = "blue", "R" = "red"), labels = c("MLM", "GLMM"), name = "PS Model") +
   theme(legend.position = "top")
 print(plGPA_w_h)
 ggsave("Images/EP_GPA_w_h.jpeg", plot = plGPA_w_h, width = 8, height = 8)
@@ -146,26 +146,26 @@ ggsave("Images/EP_GPA_w_h.jpeg", plot = plGPA_w_h, width = 8, height = 8)
 
 
 plCFU_pi_h = ggplot(df_h) +
-  geom_point(aes(x = !!sym('M - CFU - pi_h'), y = stud_career_degree_name, color = "M"), size = 4, alpha=0.7) +
-  geom_point(aes(x = !!sym('R - CFU - pi_h'), y = stud_career_degree_name, color = "R"), size = 4, alpha=0.7) +
+  geom_point(aes(x = !!sym('M - CFU - pi_h'), y = stud_career_degree_name, shape = "M", color = "M"), size = 4, alpha = 0.6) +
+  geom_point(aes(x = !!sym('R - CFU - pi_h'), y = stud_career_degree_name, shape = "R", color = "R"), size = 4, alpha = 0.6) +
   labs(x = TeX(r'($\pi_h$)'),
        y = TeX(r'(Degree Course $h$)'),
        title = 'ECTS') +
-  scale_color_manual(values = c("M" = "blue","R" = "red"), labels = c("MLM","GLMM")) +
-  guides(color = guide_legend(title = "PS Model")) + 
+  scale_shape_manual(values = c("M" = 16, "R" = 18), labels = c("MLM", "GLMM"), name = "PS Model") +
+  scale_color_manual(values = c("M" = "blue", "R" = "red"), labels = c("MLM", "GLMM"), name = "PS Model") +
   theme(legend.position = "top")
 print(plCFU_pi_h)
 ggsave("Images/EP_CFU_pi_h.jpeg", plot = plCFU_pi_h, width = 8, height = 8)
 
 
-plCFU_w_h = ggplot(df_h) +
-  geom_point(aes(x = !!sym('M - CFU - w_h'), y = stud_career_degree_name, color = "M"), size = 4, alpha=0.7) +
-  geom_point(aes(x = !!sym('R - CFU - w_h'), y = stud_career_degree_name, color = "R"), size = 4, alpha=0.7) +
+plCFU_w_h <- ggplot(df_h) +
+  geom_point(aes(x = !!sym('M - CFU - w_h'), y = stud_career_degree_name, shape = "M", color = "M"), size = 4, alpha = 0.6) +
+  geom_point(aes(x = !!sym('R - CFU - w_h'), y = stud_career_degree_name, shape = "R", color = "R"), size = 4, alpha = 0.6) +
   labs(x = TeX(r'($w_h$)'),
        y = TeX(r'(Degree Course $h$)'),
        title = 'ECTS') +
-  scale_color_manual(values = c("M" = "blue","R" = "red"), labels = c("MLM","GLMM")) +
-  guides(color = guide_legend(title = "PS Model")) + 
+  scale_shape_manual(values = c("M" = 16, "R" = 18), labels = c("MLM", "GLMM"), name = "PS Model") +
+  scale_color_manual(values = c("M" = "blue", "R" = "red"), labels = c("MLM", "GLMM"), name = "PS Model") +
   theme(legend.position = "top")
 print(plCFU_w_h)
 ggsave("Images/EP_CFU_w_h.jpeg", plot = plCFU_w_h, width = 8, height = 8)

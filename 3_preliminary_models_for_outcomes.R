@@ -56,7 +56,7 @@ sigma2_b <- d11 + d22*mean(data_grade$hybrid_teaching^2) + 2*d12*mean(data_grade
 sigma2_b
 
 print(vc <- VarCorr(lmer_mod), comp = c("Variance", "Std.Dev."))
-sigma2_eps <- as.numeric(vc[3,1])
+sigma2_eps <- as.numeric(m1$sigma^2)
 sigma2_eps
 
 PVRE <- sigma2_b/(sigma2_b+sigma2_eps)
