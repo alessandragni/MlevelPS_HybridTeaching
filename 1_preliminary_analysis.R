@@ -1,14 +1,13 @@
 
 #temp <- df_1721_pr[sample(nrow(df_1721_pr), nrow(df) * 0.1), c(covariateNames, outputVar, 'hybrid_teaching')]
-#write.csv(temp, "data.csv", row.names=FALSE, quote=FALSE) 
+#write.csv(temp, "data_complete.csv", row.names=FALSE, quote=FALSE) 
 
 source('Utils_functions/import_libraries.R')
 source('Utils_functions/plot_means.R')
 
 # 10% of the rows from the original dataframe were selected
-data <- read_csv("data.csv")
+data <- read_csv("data_complete.csv")
 data
-
 
 #### Pre-analysis on preprocessed non-matched data: Difference-in-means ####
 ##### Difference-in-means #####

@@ -7,6 +7,7 @@ xvars<-c("admission_score","career_admission_age",
          "previous_studies","origins")
 data$admission_score = as.numeric(data$admission_score)
 data$highschool_grade = as.numeric(data$highschool_grade)
+data$previous_studies <- relevel(as.factor(data$previous_studies), "Scientific")
 
 # Create a dataset for making analysis for GPA
 data_grade = data[which(data$GPA!=0),]
@@ -32,12 +33,14 @@ data$ECTS_cat = as.factor(as.numeric(cut2(data$ECTS, g=g)))
 
 ggplot(data, aes(x = ECTS)) +
   geom_histogram(binwidth = 1, fill = "grey", color = "black") +
-  labs(x = "ECTS", y = "Frequency", title = "Histogram of ECTS")
+  labs(x = "ECTS", y = "Frequency", title = "Histogram of ECTS") +
+  theme_minimal() 
 ggsave("Images/ECTS_histogram.jpeg", width = 6, height = 5)
 
 ggplot(data, aes(x = ECTS_cat)) +
   geom_bar(fill = "grey", color = "black") +
   labs(x = "ECTS_cat", y = "Count", title = "Bar Plot of ECTS_cat") + 
+  theme_minimal() +
   scale_x_discrete(labels = c("1" = "[0,9)", "2" = "[9,21)", "3" = "[21,29)", "4" = "[29,50]"))
 ggsave("Images/ECTS_cat_bar_plot.jpeg", width = 6, height = 5)
 
@@ -45,4 +48,22 @@ ggsave("Images/ECTS_cat_bar_plot.jpeg", width = 6, height = 5)
 data_grade$GPA = univariate_box_cox(data_grade$GPA)
 # --> can be assumed to be gaussian distributed
 
+
+
+# Histogram of GPA
+
+hist(log(data_grade$GPA))
+
+ggplot(data_grade, aes(x = log(GPA))) +
+  geom_histogram(binwidth = 1, fill = "grey", color = "black") +
+  labs(x = "GPA", y = "Frequency", title = "Histogram of GPA") +
+  theme_minimal() 
+
+data["GPA"][is.na(data["GPA"])] <- 0
+
+ggplot(data, aes(x = GPA)) +
+  geom_histogram(binwidth = 1, fill = "grey", color = "black") +
+  labs(x = "GPA", y = "Frequency", title = "Histogram of GPA") +
+  theme_minimal() 
+ggsave("Images/GPA_histogram.jpeg", width = 6, height = 5)
 

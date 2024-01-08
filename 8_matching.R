@@ -263,16 +263,16 @@ dataPlotMelt_ECTS$variable <- factor(dataPlotMelt_ECTS$variable,
 ## Plot using ggplot2
 pECTS = ggplot(data = dataPlotMelt_ECTS,
                mapping = aes(x = variable, y = SMD, group = Method, color = Method, 
-                             linetype = Method)) +
+                             linetype = Method, shape = Method)) +
   geom_line(size=1) +
-  geom_point(size=2) +
+  geom_point(size=5) +
   geom_hline(yintercept = 0.1, color = "black", size = 0.1) +
   coord_flip() +
   theme_bw() +
   theme(legend.key = element_blank(), text = element_text(size=16),
         legend.key.width = unit(5, "line")) +
   guides(
-    linetype = guide_legend(override.aes = list(size = 0))  # Adjust size for linetype legend
+    linetype = guide_legend(override.aes = list(size = 5))  # Adjust size for linetype legend
   )
 pECTS = pECTS + theme(legend.position = c(.7, .2)) 
 ggsave("Images/loveplot_ECTS.jpeg", plot = pECTS, width = 8, height = 8)
@@ -296,16 +296,16 @@ dataPlotMelt_ECTS$variable <- factor(dataPlotMelt_GPA$variable,
 ## Plot using ggplot2
 pGPA = ggplot(data = dataPlotMelt_GPA,
               mapping = aes(x = variable, y = SMD, group = Method, color = Method, 
-                            linetype = Method)) +
+                            linetype = Method, shape = Method)) +
   geom_line(size=1) +
-  geom_point(size=2) +
+  geom_point(size=5) +
   geom_hline(yintercept = 0.1, color = "black", size = 0.1) +
   coord_flip() +
   theme_bw() +
   theme(legend.key = element_blank(), text = element_text(size=16),
         legend.key.width = unit(5, "line")) +
   guides(
-    linetype = guide_legend(override.aes = list(size = 0))  # Adjust size for linetype legend
+    linetype = guide_legend(override.aes = list(size = 5))  # Adjust size for linetype legend
   )
 pGPA = pGPA + theme(legend.position = c(.7, .2)) 
 ggsave("Images/loveplot_GPA.jpeg", plot = pGPA, width = 8, height = 8)

@@ -94,18 +94,24 @@ ggsave("Images/PropensityScore_ModelM.jpeg", plot = PS_M, width = 8, height = 6)
 
 # or
 library(ggpattern)
+
+
 PS_M = prs_df %>%
   mutate(treatment = ifelse(treatment == 1, labs[1], labs[2])) %>%
   ggplot(aes(x = psM, fill = treatment))+
-  geom_histogram(aes(y=..density..), color='gray50',
-                 alpha=0.2, position = "identity") + ylim(0, 8) +
-  geom_density(alpha=0.2) + theme(legend.position = "top") +
-  geom_density_pattern(pattern_color = "white",
-                       pattern_fill = "grey",
-                       alpha=0.01,
-                       aes(pattern = treatment)) +
-  scale_color_grey() + scale_fill_grey() +
-  labs(x = 'Propensity Score', subtitle = 'Delivered teaching type') 
+  geom_histogram(aes(y=..density..), color='gray70',
+                 alpha=0.2, position = "identity", bins = 30) + ylim(0, 8) +
+  theme_minimal() +
+  geom_density(alpha=0.2, color='black') +  
+  scale_color_grey() + scale_fill_grey() +  theme_minimal() +
+  labs(x = 'Propensity Score', y='Density') +
+  guides(fill = guide_legend(title = "Delivered teaching type")) +
+  theme(legend.position = "top",
+       axis.text = element_text(size = 16),  # Set the size of axis text
+       axis.title = element_text(size = 18),  # Set the size of axis titles)
+       legend.text = element_text(size = 17),  # Set the size of legend text
+       legend.title = element_text(size = 17),  # Set the size of legend title
+       plot.title = element_text(size = 18))    # Set the size of plot title
 ggsave("Images/PropensityScore_ModelM.jpeg", plot = PS_M, width = 8, height = 5)
 
 
@@ -122,15 +128,19 @@ ggsave("Images/PropensityScore_ModelR.jpeg", plot = PS_R, width = 8, height = 6)
 PS_R = prs_df %>%
   mutate(treatment = ifelse(treatment == 1, labs[1], labs[2])) %>%
   ggplot(aes(x = psR, fill = treatment))+
-  geom_histogram(aes(y=..density..), color='gray50',
-                 alpha=0.2, position = "identity") + ylim(0, 8) +
-  geom_density(alpha=0.2) + theme(legend.position = "top") +
-  geom_density_pattern(pattern_color = "white",
-                       pattern_fill = "grey",
-                       alpha=0.01,
-                       aes(pattern = treatment)) +
-  scale_color_grey() + scale_fill_grey() +
-  labs(x = 'Propensity Score', subtitle = 'Delivered teaching type') 
+  geom_histogram(aes(y=..density..), color='gray70',
+                 alpha=0.2, position = "identity", bins = 30) + ylim(0, 8) +
+  theme_minimal() +
+  geom_density(alpha=0.2, color='black') +  
+  scale_color_grey() + scale_fill_grey() +  theme_minimal() +
+  labs(x = 'Propensity Score', y='Density') +
+  guides(fill = guide_legend(title = "Delivered teaching type")) +
+  theme(legend.position = "top",
+        axis.text = element_text(size = 16),  # Set the size of axis text
+        axis.title = element_text(size = 18),  # Set the size of axis titles)
+        legend.text = element_text(size = 17),  # Set the size of legend text
+        legend.title = element_text(size = 17),  # Set the size of legend title
+        plot.title = element_text(size = 18))    # Set the size of plot title
 ggsave("Images/PropensityScore_ModelR.jpeg", plot = PS_R, width = 8, height = 5)
 
 
@@ -212,15 +222,19 @@ ggsave("Images/PropensityScore_ModelM_gpa.jpeg", plot = PS_M, width = 8, height 
 PS_M = prs_df_grade %>%
   mutate(treatment = ifelse(treatment == 1, labs[1], labs[2])) %>%
   ggplot(aes(x = psM, fill = treatment))+
-  geom_histogram(aes(y=..density..), color='gray50',
-                 alpha=0.2, position = "identity") + ylim(0, 8) +
-  geom_density(alpha=0.2) + theme(legend.position = "top") +
-  geom_density_pattern(pattern_color = "white",
-                       pattern_fill = "grey",
-                       alpha=0.01,
-                       aes(pattern = treatment)) +
-  scale_color_grey() + scale_fill_grey() +
-  labs(x = 'Propensity Score', subtitle = 'Delivered teaching type') 
+  geom_histogram(aes(y=..density..), color='gray70',
+                 alpha=0.2, position = "identity", bins = 30) + ylim(0, 8) +
+  theme_minimal() +
+  geom_density(alpha=0.2, color='black') +  
+  scale_color_grey() + scale_fill_grey() +  theme_minimal() +
+  labs(x = 'Propensity Score', y='Density') +
+  guides(fill = guide_legend(title = "Delivered teaching type")) +
+  theme(legend.position = "top",
+        axis.text = element_text(size = 16),  # Set the size of axis text
+        axis.title = element_text(size = 18),  # Set the size of axis titles)
+        legend.text = element_text(size = 17),  # Set the size of legend text
+        legend.title = element_text(size = 17),  # Set the size of legend title
+        plot.title = element_text(size = 18))    # Set the size of plot title
 ggsave("Images/PropensityScore_ModelM_gpa.jpeg", plot = PS_M, width = 8, height = 5)
 
 
@@ -236,15 +250,19 @@ ggsave("Images/PropensityScore_ModelR_gpa.jpeg", plot = PS_R, width = 8, height 
 PS_R =prs_df_grade %>%
   mutate(treatment = ifelse(treatment == 1, labs[1], labs[2])) %>%
   ggplot(aes(x = psR, fill = treatment))+
-  geom_histogram(aes(y=..density..), color='gray50',
-                 alpha=0.2, position = "identity") + ylim(0, 8) +
-  geom_density(alpha=0.2) + theme(legend.position = "top") +
-  geom_density_pattern(pattern_color = "white",
-                       pattern_fill = "grey",
-                       alpha=0.01,
-                       aes(pattern = treatment)) +
-  scale_color_grey() + scale_fill_grey() +
-  labs(x = 'Propensity Score', subtitle = 'Delivered teaching type') 
+  geom_histogram(aes(y=..density..), color='gray70',
+                 alpha=0.2, position = "identity", bins = 30) + ylim(0, 8) +
+  theme_minimal() +
+  geom_density(alpha=0.2, color='black') +  
+  scale_color_grey() + scale_fill_grey() +  theme_minimal() +
+  labs(x = 'Propensity Score', y='Density') +
+  guides(fill = guide_legend(title = "Delivered teaching type")) +
+  theme(legend.position = "top",
+        axis.text = element_text(size = 16),  # Set the size of axis text
+        axis.title = element_text(size = 18),  # Set the size of axis titles)
+        legend.text = element_text(size = 17),  # Set the size of legend text
+        legend.title = element_text(size = 17),  # Set the size of legend title
+        plot.title = element_text(size = 18))    # Set the size of plot title
 ggsave("Images/PropensityScore_ModelR_gpa.jpeg", plot = PS_R, width = 8, height = 5)
 
 

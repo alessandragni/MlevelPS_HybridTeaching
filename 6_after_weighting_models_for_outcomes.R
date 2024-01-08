@@ -50,6 +50,65 @@ print(dp)
 dev.off()   
 
 
+
+#### MODEL FOR ECTS - M ####
+
+glmmTMB_zicnbinom1 <- glmmTMB(ECTS ~ admission_score + career_admission_age + 
+                                gender + previous_studies + origins + highschool_grade + 
+                                hybrid_teaching + (1 + hybrid_teaching|stud_career_degree_name),
+                              zi =~admission_score + career_admission_age + 
+                                gender + previous_studies + origins + highschool_grade + 
+                                hybrid_teaching + (1 |stud_career_degree_name),
+                              weights = data$psMw,
+                              family=nbinom1, data=data)
+
+
+
+# plot of the random intercept
+
+jpeg(file="Images/dotplot_ECTS_infl_weighting_M.jpeg", width = 150, height = 150, units = 'mm', res = 250)
+dp = lme4:::dotplot.ranef.mer(ranef(glmmTMB_zicnbinom1)$cond)
+dp$stud_career_degree_name$main <- "ZINBMM - PS Weighting from MLM"
+print(dp)
+dev.off() 
+
+# d11 = VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name[1]
+# d22 = VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name[4]
+# d12 = VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name[3]
+# rho = attr(VarCorr(glmmTMB_zinbinom1)[[1]]$stud_career_degree_name, "correlation")[2]
+# sigma2_b <- d11 + d22*mean(data$hybrid_teaching^2) + 2*d12*mean(data$hybrid_teaching) 
+# sigma2_b
+
+
+#### MODEL FOR ECTS - R ####
+
+
+glmmTMB_zicnbinom1 <- glmmTMB(ECTS ~ admission_score + career_admission_age + 
+                                gender + previous_studies + origins + highschool_grade + 
+                                hybrid_teaching + (1 + hybrid_teaching|stud_career_degree_name),
+                              zi =~admission_score + career_admission_age + 
+                                gender + previous_studies + origins + highschool_grade + 
+                                hybrid_teaching + (1 |stud_career_degree_name),
+                              weights = data$psRw,
+                              family=nbinom1, data=data)
+
+# plot of the random intercept
+
+jpeg(file="Images/dotplot_ECTS_infl_weighting_R.jpeg", width = 150, height = 150, units = 'mm', res = 250)
+dp = lme4:::dotplot.ranef.mer(ranef(glmmTMB_zicnbinom1)$cond)
+dp$stud_career_degree_name$main <- "ZINBMM - PS Weighting from GLMM"
+print(dp)
+dev.off() 
+
+# d11 = VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name[1]
+# d22 = VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name[4]
+# d12 = VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name[3]
+# rho = attr(VarCorr(glmmTMB_zicnbinom1)[[1]]$stud_career_degree_name, "correlation")[2]
+# sigma2_b <- d11 + d22*mean(data$hybrid_teaching^2) + 2*d12*mean(data$hybrid_teaching) 
+# sigma2_b
+
+
+
 #### MODEL FOR LA GPA - M ####
 lmer_mod_M = lmer("GPA ~ admission_score + career_admission_age + 
   gender + previous_studies + origins + highschool_grade + 
