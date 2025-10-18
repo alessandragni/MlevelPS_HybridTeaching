@@ -1,6 +1,6 @@
 # Assessing the impact of hybrid teaching on students’ academic performance via multilevel propensity score-based techniques
 
-> This repository contains code for reproducing the experiments and examples presented in the accompanying paper.
+This repository contains code for reproducing the experiments and examples presented in the accompanying paper.
 
 ---
 
